@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Duggu 💖</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background: linear-gradient(to right, #ffdde1, #ee9ca7);
+            color: #333;
+        }
+        .box {
+            margin-top: 60px;
+            padding: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            border: none;
+        }
+        button {
+            background: #ff4d6d;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- START -->
+<div class="box" id="start">
+    <h1>Hey Duggu 💖</h1>
+
+    <p>Shayad ye ek normal link lage… par iske andar jo hai na, wo thoda special hai 🥺</p>
+    <p>Isme thoda sa time lagega… thoda sa patience bhi chahiye hoga…</p>
+    <p>Par trust me… end tak pahunchne ke baad, aap smile kiye bina nahi reh pyengi ❤️</p>
+
+    <p>
+        Ek chhoti si request hai 🎧 <br><br>
+        Please headphones laga lijyea… aur thoda sa dil se dekhiyega 💫
+    </p>
+
+    <button onclick="startGame()">Start Your Surprise 🎁</button>
+    <p style="font-size:12px;">(Warning: Isme thoda sa pyaar zyada hai 🤭)</p>
+</div>
+
+<!-- LEVEL 1 -->
+<div class="box" id="level1" style="display:none;">
+    <h2>Enter Password 🤭</h2>
+    <input type="text" id="pass">
+    <br>
+    <button onclick="check1()">Submit</button>
+    <p id="msg1"></p>
+</div>
+
+<!-- LEVEL 2 -->
+<div class="box" id="level2" style="display:none;">
+    <h2>Kya aapko mere saath nightwalk pasand hai? 🌙</h2>
+    <input type="text" id="ans2" placeholder="haan / yes">
+    <br>
+    <button onclick="check2()">Submit</button>
+    <p id="msg2"></p>
+</div>
+
+<!-- LEVEL 3 -->
+<div class="box" id="level3" style="display:none;">
+    <h2>duggu k alawa koi or nicknames ek batiyea jo sirf main aapko bulata hu </h2>
+    <input type="text" id="ans3">
+    <br>
+    <button onclick="check3()">Submit</button>
+    <p id="msg3"></p>
+</div>
+
+<!-- LEVEL 4 -->
+<div class="box" id="level4" style="display:none;">
+    <h2>Aapko sabse jyada kaun pyar karta hai? ❤️</h2>
+    <input type="text" id="ans4">
+    <br>
+    <button onclick="check4()">Submit</button>
+    <p id="msg4"></p>
+</div>
+
+<!-- FINAL -->
+<div class="box" id="final" style="display:none;">
+    <h2>🎉 Happy Birthday Duggu 🎂</h2>
+
+    <p>
+        Aapke Buggu ki taraf se ek chhota sa surprise… 🥰 <br><br>
+
+        God bless mera bachaa 🤞🧿💫 <br><br>
+
+        Sach bolu… meri zindagi mein aane ke liye thank you ❤️ <br><br>
+
+        Aapke aane ke baad sab kuch thoda sa alag, thoda sa better ho gaya hai…  
+        aur shayad main bhi  <br><br>
+
+        Main promise karta hu…  
+        main hamesha aisa hi rahunga,  
+        aur itna hi pyaar karta rahunga… <br><br>
+
+        Har ek saal, har ek mahina,  
+        har ek hafta, har ek din…  
+        har ek ghanta aur har ek pal…  
+        mera dil bas aapke naam se dhadkega 💖 <br><br>
+
+        Aap hamesha khush raho… meri pyari Duggu 💕 <br><br>
+
+        <b>I LOVE YOU 3000 ❤️</b><br><br>
+
+        <i>…aur sach kahu,  
+        agar ye sab ek game tha,  
+        to main shuru se hi haar chuka tha…  
+        kyunki jeet to hamesha aapki hi hoti hai 💫</i>
+    </p>
+</div>
+
+<script>
+let attempts = 0;
+
+function startGame() {
+    document.getElementById("start").style.display = "none";
+    document.getElementById("level1").style.display = "block";
+}
+
+function next(from, to) {
+    document.getElementById(from).style.display = "none";
+    document.getElementById(to).style.display = "block";
+}
+
+// Level 1
+function check1() {
+    let pass = document.getElementById("pass").value;
+    if(pass === "1308") {
+        next("level1", "level2");
+    } else {
+        document.getElementById("msg1").innerText = "Wrong password 😭";
+    }
+}
+
+// Level 2
+function check2() {
+    let ans = document.getElementById("ans2").value.toLowerCase();
+    if(ans === "haan" || ans === "haa" || ans === "yes") {
+        next("level2", "level3");
+    } else {
+        document.getElementById("msg2").innerText = "fir se sochiyea 😭";
+    }
+}
+
+// Level 3
+function check3() {
+    let ans = document.getElementById("ans3").value.toLowerCase();
+    let valid = ["aishu","rapunzel","miss marvel","roshni"];
+
+    if(valid.includes(ans)) {
+        next("level3", "level4");
+    } else {
+        attempts++;
+        if(attempts === 1) {
+            document.getElementById("msg3").innerText = "Aapko itna bhi nahi yaad 😭 try again";
+        } else {
+            document.getElementById("msg3").innerText = "Phir se galat jawab 😭";
+        }
+    }
+}
+
+// Level 4
+function check4() {
+    let ans = document.getElementById("ans4").value.toLowerCase();
+    if(ans === "aap" || ans === "buggu" || ans === "arjun") {
+        next("level4", "final");
+    } else {
+        document.getElementById("msg4").innerText = "Galat jawab 😭";
+    }
+}
+</script>
+
+</body>
+</html>
